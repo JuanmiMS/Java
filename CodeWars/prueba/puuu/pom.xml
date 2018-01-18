@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.juanmi</groupId>
-  <artifactId>KatasCodeWars</artifactId>
-  <version>1.0-snapshot</version>
+  <groupId>org.prueba</groupId>
+  <artifactId>puuu</artifactId>
+  <version>9</version>
   <packaging>jar</packaging>
 
-  <name>KatasCodeWars</name>
+  <name>puuu</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,20 +15,17 @@
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/junit/junit -->
-<dependency>
+    <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
     <version>4.12</version>
     <scope>test</scope>
 </dependency>
-
-<dependency>
+    <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
     <version>5.0.1</version>
     <scope>test</scope>
 </dependency>
-
   </dependencies>
 </project>
