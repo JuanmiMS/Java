@@ -4,7 +4,7 @@ package bowling;
  * Hello world!
  *
  */
-public class Bowling
+public class App
 {
     public static void main( String[] args )
     {
