@@ -57,10 +57,8 @@ public class SimpleExercices
             }
         }
         if ((initialPosition[0] + initialPosition[1] == 0) && (walk.length == 10)){
-            System.out.println(true);
             return true;
         }else{
-            System.out.println(false);
             return false;
         }
      }
