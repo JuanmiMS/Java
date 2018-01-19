@@ -3,6 +3,7 @@ public class SimpleExercices
 {
     public static void main(String [] args){
         //Here we can call the methods to see the prints and asserts
+        isValid(new char[] {'w','e','w','e','w','e','w','e','w','e','w','e'});
     }
 
     //https://www.codewars.com/kata/54ff0d1f355cfd20e60001fc/train/java
@@ -36,10 +37,33 @@ public class SimpleExercices
     //https://www.codewars.com/kata/take-a-ten-minute-walk
     
     public static boolean isValid(char[] walk) {
-        boolean finalAnswer = true; //change
 
+        int totalTime = 0;
+        int[] initialPosition = new int[2]; //Start position in [0,0], the first for X and the second for Y
 
-        return finalAnswer;
+        for (int i = 0; i<walk.length;i++){
+            switch (walk[i]){
+                case 'n':
+                    initialPosition[0] += 1;
+                    break;
+                case 's':
+                    initialPosition[0] -= 1;
+                    break;
+                case 'e':
+                    initialPosition[1] += 1;
+                    break;
+                case 'w':
+                    initialPosition[1] -= 1;
+                    break;
+            }
+        }
+        if ((initialPosition[0] + initialPosition[1] == 0) && (walk.length == 10)){
+            System.out.println(true);
+            return true;
+        }else{
+            System.out.println(false);
+            return false;
+        }
      }
     
     }
