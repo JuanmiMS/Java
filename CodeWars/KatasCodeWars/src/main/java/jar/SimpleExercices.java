@@ -2,7 +2,7 @@ package jar;
 public class SimpleExercices 
 {
     public static void main(String [] args){
-        arrayPlusArray(new int[]{1,2,3}, new int[]{4,5,6});
+        //Here we can call the methods to see the prints and asserts
     }
 
     //https://www.codewars.com/kata/54ff0d1f355cfd20e60001fc/train/java
@@ -13,10 +13,10 @@ public class SimpleExercices
             sum *= i;
         }
         return sum;
-        
     }
     //https://www.codewars.com/kata/array-plus-array/train/java
     public static int arrayPlusArray(int[] arr1, int[] arr2) {
+
         
         int totalSum = 0;
 
@@ -33,6 +33,14 @@ public class SimpleExercices
         return totalSum;
       }
 
+    //https://www.codewars.com/kata/take-a-ten-minute-walk
     
-}
+    public static boolean isValid(char[] walk) {
+        boolean finalAnswer = true; //change
+
+
+        return finalAnswer;
+     }
+    
+    }
 

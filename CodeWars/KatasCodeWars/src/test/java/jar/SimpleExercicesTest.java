@@ -2,17 +2,9 @@ package jar;
 import jar.SimpleExercices;
 
 import org.junit.Test;
-
-import junit.framework.TestCase;
-
-
-/**
- * Unit test for simple App.
- */
-
+import static org.junit.Assert.*;
 
 public class SimpleExercicesTest 
-extends TestCase
 {
     @Test
     public void testFactorial(){
@@ -27,5 +19,13 @@ extends TestCase
         assertEquals(-21, SimpleExercices.arrayPlusArray(new int[]{-1,-2,-3}, new int[]{-4,-5,-6}));
         assertEquals(15, SimpleExercices.arrayPlusArray(new int[]{0,0,0}, new int[]{4,5,6}));
         assertEquals(2100, SimpleExercices.arrayPlusArray(new int[]{100,200,300}, new int[]{400,500,600}));
+    }
+
+    @Test
+    public void testisValid(){
+        assertEquals("Should return true", true, SimpleExercices.isValid(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
+        assertEquals("Should return false", false, SimpleExercices.isValid(new char[] {'w','e','w','e','w','e','w','e','w','e','w','e'}));
+        assertEquals("Should return false", false, SimpleExercices.isValid(new char[] {'w'}));
+        assertEquals("Should return false", false, SimpleExercices.isValid(new char[] {'n','n','n','s','n','s','n','s','n','s'}));
     }
 }
