@@ -1,12 +1,9 @@
 package jar;
 
-import org.junit.platform.commons.annotation.Testable;
+import org.junit.Test;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.framework.TestResult;
-import junit.*;
+
 
 /**
  * Unit test for simple App.
@@ -16,6 +13,8 @@ import junit.*;
 public class SimpleExercicesTest 
     extends TestCase
 {
+
+    @Test
     public void testFactorial()
     {
         assertTrue("Falla test 1", 1 == SimpleExercices.factorial(0));
