@@ -38,7 +38,6 @@ public class SimpleExercices
     
     public static boolean isValid(char[] walk) {
 
-        int totalTime = 0;
         int[] initialPosition = new int[2]; //Start position in [0,0], the first for X and the second for Y
 
         for (int i = 0; i<walk.length;i++){
