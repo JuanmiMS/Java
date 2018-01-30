@@ -6,12 +6,12 @@
     "configurations": [
         {
             "type": "java",
-            "name": "KatasCodeWars",
+            "name": "Debug (Launch)-SimpleExercices<KatasCodeWars>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopOnEntry": false,
-            "mainClass": "jar.App",
+            "mainClass": "jar.SimpleExercices",
             "projectName": "KatasCodeWars",
             "args": ""
         },
