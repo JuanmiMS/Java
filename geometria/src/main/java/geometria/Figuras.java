@@ -1,18 +1,25 @@
 package geometria;
 
-import java.util.ArrayList;
-/**
- * Hello world!
- *
- */
-public class Figuras{
+public abstract class Figuras{
     
-    ArrayList<Figuras> figuras = new ArrayList<Figuras>();
+    private String nombre;
     
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+	public String getNombre() {
+        return this.nombre;
+	}
+    
+	public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
+    public Figuras(){
+        this.nombre = "desconocido";
+    }
+
+    public Figuras(String nombre){
+        this.nombre = nombre;
+    }
+    
+    public abstract double area();
 
 }
