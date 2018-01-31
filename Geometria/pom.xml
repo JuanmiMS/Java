@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.mvpigs</groupId>
-  <artifactId>Geometria</artifactId>
+  <artifactId>geometria</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Geometria</name>
+  <name>geometria</name>
   <url>http://maven.apache.org</url>
 
   <properties>
