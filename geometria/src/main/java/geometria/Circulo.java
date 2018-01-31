@@ -5,10 +5,19 @@ public class Circulo extends Figuras{
     private double lado = 0d;
     private final double PI = Math.PI;
     
+    public Circulo(){
+        super();
+    }
+
     public Circulo(float lado){
         super();
         this.lado = lado;
     }
+
+    public Circulo(String nombre, double lado){
+		super(nombre);
+		this.lado = lado;
+	}
 
     public double getLado() {
         return lado;
