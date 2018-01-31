@@ -39,7 +39,8 @@ public class checkDNI{
             this.letra = letras[calcularResto(number)];
         }
         else{
-            System.out.print("El número dado no es un DNI");
+            System.out.print("error");
+            this.letra = 'o';
         }
         
     }
