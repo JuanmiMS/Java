@@ -14,3 +14,5 @@ KatasCodeWars/.vscode/
 !/.mvn/wrapper/maven-wrapper.jar
 
 \.vscode/
+
+geometria/src/test/
