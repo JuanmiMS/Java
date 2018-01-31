@@ -3,8 +3,14 @@ package geometria;
 public class Cuadrado extends Figuras{
     
     private double lado = 0d;
-
-    public Cuadrado(float lado){
+	
+	public Cuadrado(float lado){
+		super();
+        this.lado = lado;
+	}
+	
+	public Cuadrado(String nombre, float lado){
+		super(nombre);
         this.lado = lado;
     }
 	

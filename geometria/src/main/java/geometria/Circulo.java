@@ -2,34 +2,36 @@ package geometria;
 
 public class Circulo extends Figuras{
     
-    private double lado = 0d;
+    private double radio = 0d;
     private final double PI = Math.PI;
     
+    /*Constructores*/
     public Circulo(){
         super();
     }
 
     public Circulo(float lado){
         super();
-        this.lado = lado;
+        this.radio = lado;
     }
 
-    public Circulo(String nombre, double lado){
+    public Circulo(String nombre, double radio){
 		super(nombre);
-		this.lado = lado;
+		this.radio = radio;
 	}
 
-    public double getLado() {
-        return lado;
+    //Getters y Setters
+    public double getRadio() {
+        return radio;
     }
 
-    public void setLado(double lado) {
-        this.lado = lado;
+    public void setRadio(double radio) {
+        this.radio = radio;
     }
     
     @Override
 	public double area(){
-		return Math.pow(getLado(), 2);
+		return getRadio()*PI;
 	}
 
 	
