@@ -41,8 +41,8 @@ public class Ejercicio1 {
         System.out.println("Numero de elementos pares: " + auxiliar[0]);
         System.out.println("Numero de elementos impares: " + auxiliar[1]);
         System.out.println("Media impares: " + auxiliar[2]);
-        System.out.println("Suma de lso enteros comprendidos entre 1 y el minimo de la lista: "
-                        + auxiliar[3]);
+        System.out.println("Suma de lso enteros comprendidos entre 1 y "+
+        "el minimo de la lista: " + auxiliar[3]);
     }
 
 }
