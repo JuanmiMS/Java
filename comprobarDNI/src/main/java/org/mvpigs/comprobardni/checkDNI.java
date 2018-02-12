@@ -12,7 +12,7 @@ public class checkDNI {
         //Comprueba si el DNI son números de la posición 0 a la 8
         if (isNumeric(dni.substring(0, 8))) {
             this.dni = dni;
-            calcularLetra(dni);
+            calcularLetra(dni.substring(0, 8));
         }
         //En caso de contener letra comprobará si es válido
         else {
@@ -47,6 +47,7 @@ public class checkDNI {
 
     //Clases privadas
     private char calcularLetra(String dni) {
+        System.out.println("ESTE DNI: "+dni);
         int number = Integer.parseInt(dni);
         this.letra = letras[calcularResto(number)];
         return letras[calcularResto(number)];
