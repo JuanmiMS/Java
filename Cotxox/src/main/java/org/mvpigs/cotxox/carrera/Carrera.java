@@ -1,75 +1,106 @@
 package org.mvpigs.cotxox.carrera;
+
 import org.mvpigs.cotxox.conductores.Conductor;
 import org.mvpigs.cotxox.conductores.PoolConductores;
+import org.mvpigs.cotxox.tarifa.Tarifa;
 
 public class Carrera {
-
     private String tarjetaCredito;
     private String origen;
     private String destino;
-    private double distancia = 0d;
-    private float costeEsperado;
-    private int tiempoEsperado;
-    private float tiempoCarrera;
-    private float costeTotal;
+    private double distancia;
+    private int tiempoEsperadoMinutos;
+    private double costeEsperado;
+    private double costeTotal;
+    private double propina;
 
     private Conductor conductor;
 
-    public void asignarConductor(PoolConductores conductores){
-
-    }
-
-    public Conductor getConductor(){
-        return this.conductor;
-    }
-
-    public String getNombre{
-        return getConductor().getNombre();
-    }
-
+    //Constructor
     public Carrera(String tarjetaCredito){
         this.tarjetaCredito = tarjetaCredito;
     }
 
-    public void setTiempoEsperado(int tiempoEsperado){
-        this.tiempoEsperado = tiempoEsperado;
-    }
-    public int getTiempoEsperado(){
-        return tiempoEsperado;
+    //Getters y setters
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
     }
 
-    public String getTarjetaCredito(){
+    public Conductor getConductor(){
+        return conductor;
+    }
+
+    public double getCosteEsperado(){
+        return Tarifa.getCosteEsperado(this);
+    }
+
+    public String getTarjetaCredito() {
         return tarjetaCredito;
     }
-    public void setOrigen(String origen){
-        this.origen = origen;
+
+    public void setTarjetaCredito(String tarjetaCredito) {
+        this.tarjetaCredito = tarjetaCredito;
     }
-    public String getOrigen(){
+
+    public String getOrigen() {
         return origen;
     }
 
-    public void setDestino(String destino){
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
         this.destino = destino;
     }
 
-    public String getDestino(){
-        return destino;
+    public double getDistancia() {
+        return distancia;
     }
+
     public void setDistancia(double distancia) {
         this.distancia = distancia;
     }
 
-    public double getDistancia() {
-        return this.distancia;
+    public int getTiempoEsperado() {
+        return tiempoEsperadoMinutos;
     }
 
-    public void setCosteEsperado(float costeEsperado){
-        this.costeEsperado = costeEsperado;
+    public void setTiempoEsperado(int tiempoEsperadoMinutos) {
+        this.tiempoEsperadoMinutos = tiempoEsperadoMinutos;
     }
 
-    public float getCosteEsperado(){
-        return this.costeEsperado;
+    public void asignarConductor(PoolConductores conductores) {
+        setConductor(conductores.asignarConductor());
     }
 
+    public void realizarPago(double pago){
+        this.costeTotal = pago;
+    }
+    public void recibirPropina(double propina){
+        this.propina = propina;
+    }
+    public void liberarConductor(){
+        conductor.setOcupado(false);
+    }
 
+    public double getPropina() {
+        return propina;
+    }
+
+    public void setPropina(double propina) {
+        this.propina = propina;
+    }
+
+    public double getCosteTotal() {
+        return costeTotal;
+    }
+
+    public void setCosteTotal(double costeTotal) {
+        this.costeTotal = costeTotal;
+    }
 }

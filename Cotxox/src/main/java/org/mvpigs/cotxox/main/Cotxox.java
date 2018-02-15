@@ -50,7 +50,7 @@ public class Cotxox {
          * La flota es un objeto de tipo PoolConductores.
          */
 
-        ArrayList<Conductor> poolConductores = new ArrayList<Conductor>();
+        ArrayList<Conductor> poolConductores = new ArrayList<>();
         Conductor conductor = null;
 
         // creamos objetos conductor y los metemos en el array
@@ -65,7 +65,7 @@ public class Cotxox {
         String[] modelos = { "Chevy Malibu", "Toyota Prius", "Mercedes A" };
 
         int index = 0;
-        // conductora.getClass().getFields();
+        //conductora.getClass().getFields();
         for (Conductor conductora : poolConductores) {
             conductora.setMatricula(matricula[index]);
             conductora.setModelo(modelos[index]);
@@ -119,3 +119,4 @@ public class Cotxox {
         System.out.println("Stars: " + carrera.getConductor().getValoracion());
     }
 }
+
