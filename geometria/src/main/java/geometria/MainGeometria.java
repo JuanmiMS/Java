@@ -3,7 +3,7 @@ package geometria;
 import java.util.ArrayList;
 
 //Aquí añadiremos las figuras
-public class MainGeometria{
+public class MainGeometria {
     public static void main(String[] args) {
         ArrayList<Figuras> figuras = new ArrayList<Figuras>();
 
@@ -13,9 +13,9 @@ public class MainGeometria{
 
         Cuadrado cuadradoL = new Cuadrado(5);
         Cuadrado cuadradoS = new Cuadrado("cuadrado", 10);
-        
+
         Rectangulo rectanguloL = new Rectangulo(3, 3);
-        Rectangulo rectanguloS = new Rectangulo("rectangulo",3, 7);
+        Rectangulo rectanguloS = new Rectangulo("rectangulo", 3, 7);
 
         Elipse elipseL = new Elipse(4, 5);
         Elipse elipseS = new Elipse("elipse", 5, 2);
@@ -28,8 +28,8 @@ public class MainGeometria{
         figuras.add(elipseS);
 
         //Mostramos el nombre de las figuras con su diametro por pantalla
-        for (Figuras figura : figuras){
-			System.out.println("Area del " + figura.getNombre() + " = " + figura.area());
-		}
+        for (Figuras figura : figuras) {
+            System.out.println("Area del " + figura.getNombre() + " = " + figura.area());
+        }
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="461.5" y="0.0">geometria.Figuras</node>
+    <node x="259.0" y="196.0">geometria.Elipse</node>
+    <node x="562.0" y="210.0">geometria.Rectangulo</node>
+    <node x="0.0" y="223.5">geometria.Cuadrado</node>
+    <node x="869.0" y="196.0">geometria.Circulo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="geometria.Rectangulo" target="geometria.Figuras">
+      <point x="0.0" y="-86.5" />
+      <point x="705.5" y="176.0" />
+      <point x="575.875" y="176.0" />
+      <point x="22.875" y="73.0" />
+    </edge>
+    <edge source="geometria.Elipse" target="geometria.Figuras">
+      <point x="0.0" y="-100.5" />
+      <point x="400.5" y="176.0" />
+      <point x="530.125" y="176.0" />
+      <point x="-22.875" y="73.0" />
+    </edge>
+    <edge source="geometria.Cuadrado" target="geometria.Figuras">
+      <point x="0.0" y="-73.0" />
+      <point x="119.5" y="166.0" />
+      <point x="484.375" y="166.0" />
+      <point x="-68.625" y="73.0" />
+    </edge>
+    <edge source="geometria.Circulo" target="geometria.Figuras">
+      <point x="0.0" y="-100.5" />
+      <point x="987.0" y="166.0" />
+      <point x="621.625" y="166.0" />
+      <point x="68.625" y="73.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="501.48375016796035" y="190.26165574191884" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

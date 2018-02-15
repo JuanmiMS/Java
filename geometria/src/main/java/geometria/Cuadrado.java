@@ -2,7 +2,7 @@ package geometria;
 
 public class Cuadrado extends Figuras{
     
-    private double lado = 0d;
+    private double lado;
 	
 	public Cuadrado(float lado){
 		super();
