@@ -28,4 +28,12 @@ public class SimpleExercicesTest
         assertEquals("Should return false", false, SimpleExercices.isValid(new char[] {'w'}));
         assertEquals("Should return false", false, SimpleExercices.isValid(new char[] {'n','n','n','s','n','s','n','s','n','s'}));
     }
+
+    @Test
+    public void test() {
+        assertEquals("aehrsty", SimpleExercices.longest("aretheyhere", "yestheyarehere"));
+        assertEquals("abcdefghilnoprstu", SimpleExercices.longest("loopingisfunbutdangerous", "lessdangerousthancoding"));
+        assertEquals("acefghilmnoprstuy", SimpleExercices.longest("inmanylanguages", "theresapairoffunctions"));
+    }
+
 }
