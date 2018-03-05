@@ -31,8 +31,17 @@ public enum Planeta {
 
     /*Getters y Setters*/
 
-    public double getmasa(){
+    public double getMasa(){
         return this.masa;
+    }
+    public double getRadio(){
+        return this.radius;
+    }
+
+    public double pesoSuperficie(double pesoHumano){
+        double total = 0;
+
+        return total;
     }
 
     public static void main(String[] args) {
