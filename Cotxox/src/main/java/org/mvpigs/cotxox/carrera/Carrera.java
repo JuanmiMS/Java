@@ -17,8 +17,12 @@ public class Carrera {
     private Conductor conductor;
 
     //Constructor
-    public Carrera(String tarjetaCredito){
+    public Carrera(String tarjetaCredito) {
         this.tarjetaCredito = tarjetaCredito;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
     }
 
     //Getters y setters
@@ -26,11 +30,7 @@ public class Carrera {
         this.conductor = conductor;
     }
 
-    public Conductor getConductor(){
-        return conductor;
-    }
-
-    public double getCosteEsperado(){
+    public double getCosteEsperado() {
         return Tarifa.getCosteEsperado(this);
     }
 
@@ -78,13 +78,15 @@ public class Carrera {
         setConductor(conductores.asignarConductor());
     }
 
-    public void realizarPago(double pago){
+    public void realizarPago(double pago) {
         this.costeTotal = pago;
     }
-    public void recibirPropina(double propina){
+
+    public void recibirPropina(double propina) {
         this.propina = propina;
     }
-    public void liberarConductor(){
+
+    public void liberarConductor() {
         conductor.setOcupado(false);
     }
 

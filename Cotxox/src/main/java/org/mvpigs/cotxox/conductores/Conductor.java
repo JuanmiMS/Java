@@ -10,22 +10,18 @@ public class Conductor {
     private ArrayList<Byte> valoraciones = new ArrayList<>();
     private boolean ocupado = false;
 
-    public Conductor(){
+    public Conductor() {
     }
 
-    public Conductor(String nombre){
+    public Conductor(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-
-    public double getValoracion(){
+    public double getValoracion() {
         return this.valoracionMedia;
     }
-    public void setValoracion(byte valoracion){
+
+    public void setValoracion(byte valoracion) {
         valoraciones.add(valoracion);
         calcularValoracionMedia();
     }
@@ -65,6 +61,10 @@ public class Conductor {
 
     public String getMatricula() {
         return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
 }

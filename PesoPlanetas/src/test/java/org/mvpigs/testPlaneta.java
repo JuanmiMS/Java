@@ -60,12 +60,21 @@ public class testPlaneta {
         }
     }
 
+<<<<<<< Updated upstream:PesoPlanetas/src/test/java/org/mvpigs/testPlaneta.java
     @Test
     public void PesoSuperficieMercurioTest() {
         Planeta planeta = Planeta.MERCURY;
         double pesoHumano = 175;
         assertEquals(66.107583, planeta.pesoSuperficie(pesoHumano), 0.001);
     }
+=======
+//    @Test
+//    public void PesoSuperficieMercurioTest() {
+//        Planeta planeta = Planeta.MERCURY;
+//        double pesoHumano = 175;
+//        assertEquals(66.107583, planeta.pesoSuperficie(pesoHumano), 0.001);
+//    }
+>>>>>>> Stashed changes:PesoPlanetas/src/test/java/org/mvpigs/testPesoPlanetas.java
 //
 //    @Test
 //    public void ArrayPlanetasTerrestresTest() {

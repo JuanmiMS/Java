@@ -9,6 +9,7 @@ public class Estacion {
     private String direccion;
     private int numeroAnclajes;
     private Bicicleta[] anclajesLibres;
+    private Object anclajes;
 
     /*Constructor*/
     public Estacion(int id, String direccion, int numeroAnclajes){
@@ -127,5 +128,16 @@ public class Estacion {
 
     public void setAnclaje(int numeroAnclajes) {
         this.numeroAnclajes = numeroAnclajes;
+    }
+
+    public void mostrarAnclaje(Bicicleta bicicleta, int i) {
+    }
+
+    public int getNumeroAnclajes() {
+        return numeroAnclajes;
+    }
+
+    public Object getAnclajes() {
+        return anclajes;
     }
 }
