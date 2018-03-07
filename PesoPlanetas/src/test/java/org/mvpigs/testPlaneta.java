@@ -57,7 +57,6 @@ public class testPlaneta {
     public void PlanetaNamesIteratorTest() {
         for (Planeta planeta : Planeta.values()) {
             assertThat(planeta.name()).isIn(planetas);
-            //assertThat(planeta.name()).isIn(planetas.toString());
         }
     }
 

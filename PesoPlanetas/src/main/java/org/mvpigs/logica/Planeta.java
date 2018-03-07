@@ -39,9 +39,10 @@ public enum Planeta {
     }
 
     public double pesoSuperficie(double pesoHumano){
-        double total = 0;
+        double masados = pesoHumano / G;
+        double Gravedad_en_superficie = G * EARTH.getMasa() / Math.pow(EARTH.getRadio(), 2);
 
-        return total;
+        return masados * Gravedad_en_superficie;
     }
 
     public static void main(String[] args) {
