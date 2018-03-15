@@ -3,91 +3,104 @@ package org.mvpigs;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import org.mvpigs.bicicleta.Bicicleta;
 import org.mvpigs.estacion.Estacion;
-import static org.junit.Assert.assertEquals;
-
-import org.mvpigs.*;
 import org.mvpigs.tarjetaUsuario.TarjetaUsuario;
 
-public class testEstacion{
+import static org.junit.Assert.assertEquals;
 
-    private Estacion est;
-
-    @Before //No funciona
+public class EstacionTest {
+    @Before
     public void crearEstaciones(){
-        est = new Estacion(5, "Palma", 3);
+        Estacion estacion = new Estacion("");
+        Estacion palma = new Estacion(1, "Plaza España", 8);
+        TarjetaUsuario perico = new TarjetaUsuario("123456789, true");
     }
 
     @Test
-    public void testConstructor(){
-        assertEquals(est.getId(), 5);
-        assertEquals(est.getDireccion(), "Palma");
-        assertEquals(est.getAnclaje(), 3);
+    public void testComprobarEstacion() {
+
+        assertEquals(0, estacion.getId());
+        assertEquals(null, estacion.getDireccion());
+        assertEquals(0, estacion.getNumeroAnclajes());
+        assertEquals(null, estacion.getAnclajes());
     }
 
     @Test
-    public void testAnclajesLibres(){
-        assertEquals(3, est.anclajesLibres());
+    public void testComprobarEstacionConDatos() {
+        System.out.println("[ " + palma.getId() + " ] " + palma.getDireccion() + " " + palma.getNumeroAnclajes());
+        assertEquals(8, palma.getAnclajes().length);
     }
 
-    //Caso test de David para testear todos los métodos y objetos
     @Test
-    public void testAll(){
-        Estacion estacion = new Estacion(1, "Manacor", 6);
+    public void testConsultarEstacion() {
+        System.out.println("**** CASO TEST VISUALIZAR ESTACION ****");
 
-        /* caso TEST visualizar estado de la estacion
-         * muestra id, direccion, anclaje
-         * */
+        palma.consultarEstacion();
 
-        System.out.println("\n **** caso TEST visualizar estado de la estacion **** \n");
+    }
 
-        estacion.consultarEstacion();
+    @Test
+    public void testConsultarAnclajesLibres() {
+        System.out.println("**** CASO TEST VISUALIZAR ANCLAJES LIBRES ****");
+        Estacion palma = new Estacion(1, "Plaza España", 8);
+        System.out.println("anclajesLibres: " + palma.anclajesLibres());
+        assertEquals(8, palma.anclajesLibres());
+    }
 
-        /* caso TEST visualizar anclajes libres */
+    @Test
+    public void testConsultarAnclajes() {
+        System.out.println("**** CASO TEST VISUALIZAR ANCLAJES ****");
+        Estacion manacor = new Estacion(1, "Manacor", 6);
+        manacor.consultarAnclajes();
+    }
 
-        System.out.println("\n **** caso TEST visualizar anclajes libres **** \n");
+    @Test
+    public void testAnclarBicicleta() {
+        Estacion manacor = new Estacion(1, "Manacor", 6);
+        Bicicleta bici = new Bicicleta(291);
+        manacor.anclarBicicleta(bici);
+    }
 
-        System.out.println("anclajesLibres: " + estacion.anclajesLibres());
+    @Test
+    public void testMostrarAnclaje() {
+        System.out.println("**** CASO TEST VISUALIZAR ANCLAJES ****");
+        Estacion olivar = new Estacion(2, "Plaza Olivar", 8);
+        Bicicleta bicicleta = new Bicicleta(291);
+        olivar.mostrarAnclaje(bicicleta, 1);
+    }
 
-        /* caso TEST anclar bicicleta(s) */
+    @Test
+    public void testLeerTarjetaUsuarioInactiva() {
+        TarjetaUsuario perico = new TarjetaUsuario("123456789");
+        Estacion olivar = new Estacion(2, "Plaza Olivar", 8);
+        assertEquals(false, olivar.leerTarjetaUsuario(perico));
+    }
 
-        System.out.println("\n **** caso TEST anclar bicicleta(s) **** \n");
+    @Test
+    public void testLeerTarjetaUsuarioActiva() {
+        TarjetaUsuario perico = new TarjetaUsuario("123456789, true");
+        Estacion olivar = new Estacion(2, "Plaza Olivar", 8);
+        assertEquals(true, olivar.leerTarjetaUsuario(perico));
+    }
 
-        int[] bicicletas = {291, 292, 293, 294};
+    @Test
+    public void testRetirarBicicletaTarjetaInactiva() {
+        Estacion olivar = new Estacion(2, "Plaza Olivar", 8);
+        TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("123456789");
+        olivar.retirarBicicleta(tarjetaUsuario);
 
-		/* // generar anclaje random
-		for (int i: bicicletas){
-			System.out.println( estacion.generarAnclaje());
-		}
-		*/
+    }
 
-        for ( int id: bicicletas ){
-            Bicicleta bicicleta = new Bicicleta(id);
-            estacion.anclarBicicleta(bicicleta);
-        }
+    @Test
+    public void testRetirarBicicleta() {
+        Estacion olivar = new Estacion(2, "Plaza Olivar", 8);
+        TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("123456789", true);
 
-        System.out.println("anclajesLibres tras generar "+ bicicletas.length + " bicis: " + estacion.anclajesLibres());
+        // Debemos anclar bicicletas para poder retirarlas antes
+        Bicicleta bici = new Bicicleta(291);
 
-        /* caso TEST consultar bicicletas ancladas */
-
-        System.out.println("\n **** caso TEST consultar bicicletas ancladas **** \n");
-
-        estacion.consultarAnclajes();
-
-        /* caso TEST retirar bicicleta */
-
-        System.out.println("\n **** caso TEST retirar bicicleta **** \n");
-
-        TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("000456789", true);
-
-        System.out.println("¿tarjeta de usuario activada? (true/false): " + estacion.leerTarjetaUsuario(tarjetaUsuario) );
-
-        estacion.retirarBicicleta(tarjetaUsuario);
-
-        estacion.consultarAnclajes();
-
-        System.out.println("anclajesLibres: " + estacion.anclajesLibres());
+        olivar.anclarBicicleta(bici);
+        olivar.retirarBicicleta(tarjetaUsuario);
     }
 
 }

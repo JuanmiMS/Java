@@ -9,20 +9,21 @@ public class Tarifa {
     final static private double porcentajeComision = .2;
 
 
-    public static double getCosteEsperado(Carrera carrera){
-        double total = getCosteDistancia(carrera.getDistancia())+
-                    getCosteTiempo(carrera.getTiempoEsperado());
-        if(total<costeMinimo){
+    public static double getCosteEsperado(Carrera carrera) {
+        double total = getCosteDistancia(carrera.getDistancia()) +
+                getCosteTiempo(carrera.getTiempoEsperado());
+        if (total < costeMinimo) {
             return costeMinimo;
-        }
-        else {
+        } else {
             return total;
         }
     }
-    public static double getCosteDistancia(double distancia){
-        return distancia*costeMilla;
+
+    public static double getCosteDistancia(double distancia) {
+        return distancia * costeMilla;
     }
-    public static double getCosteTiempo(double minutos){
-        return minutos*costeMinuto;
+
+    public static double getCosteTiempo(double minutos) {
+        return minutos * costeMinuto;
     }
 }

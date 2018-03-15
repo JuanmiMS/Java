@@ -38,11 +38,26 @@ public enum Planeta {
         return this.radius;
     }
 
-    public double pesoSuperficie(double pesoHumano){
-        double masados = pesoHumano / G;
-        double Gravedad_en_superficie = G * EARTH.getMasa() / Math.pow(EARTH.getRadio(), 2);
+    private double gravedadSuperficie(){
+      return G * getMasa()/Math.pow(getRadio(), 2);
+    }
 
-        return masados * Gravedad_en_superficie;
+    private double masaHumano(double pesoHumano){
+        return pesoHumano / EARTH.gravedadSuperficie();
+    }
+
+    public double pesoSuperficie(double pesoHumano){
+       return masaHumano(pesoHumano) * gravedadSuperficie();
+    }
+
+    public static Planeta[] getPlanetasTerrestres(){
+        Planeta[] planetasTerrestres = new Planeta[4];
+
+        for (int i = Planeta.MERCURY.ordinal(); i < Planeta.JUPITER.ordinal(); i++) {
+            planetasTerrestres[i] = Planeta.values()[i];
+        }
+
+        return planetasTerrestres;
     }
 
     public static void main(String[] args) {
