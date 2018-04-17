@@ -20,11 +20,12 @@ public class App
     	final double minTemp = 15.0;
         final double maxTemp = 21.0;
         
-        RoomTemperature temperature = new RoomTemperature(15);
         Heater heater = new GasHeater();
         Thermometer thermometer = new RemoteCommandSensor();
-        
-        Regulate regulator = new Regulator(thermometer, heater, minTemp, maxTemp, temperature);
+
+        RoomTemperature tempSala = RoomTemperature.getInstance();
+
+        Regulate regulator = new Regulator(thermometer, heater, minTemp, maxTemp, tempSala);
         
         System.out.println( "Arrancando..." );
         regulator.regulate();
