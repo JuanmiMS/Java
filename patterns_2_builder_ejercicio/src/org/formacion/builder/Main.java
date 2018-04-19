@@ -16,12 +16,12 @@ public class Main {
                 .setColegio("Colegio de Selva")
                 .build();
 
-		// esta codigo NO debe compilar
-		/*
+		System.out.println("todo ok");
+		//No debería compilar
 		Persona mal = new Persona.Builder("Luisa")
 				    .setMayor(20)
 				    .setColegio("Colegio de Villa Arriba")
 				    .build();
-        */
+
 	}
 }
