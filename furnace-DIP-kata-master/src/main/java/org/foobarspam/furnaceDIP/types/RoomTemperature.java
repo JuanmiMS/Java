@@ -4,13 +4,20 @@ public class RoomTemperature {
 
     private double temperature = 0;
 
-    private static RoomTemperature instance = new RoomTemperature();
+    private static RoomTemperature INSTANCE;
 
     private RoomTemperature() {
     }
 
-    public static RoomTemperature getInstance() {
-        return instance;
+    public synchronized static RoomTemperature getInstance() {
+       if(INSTANCE == null){
+           INSTANCE = new RoomTemperature();
+       }
+       return INSTANCE;
+    }
+
+    private Object readResolve(){
+        return INSTANCE;
     }
 
     public void setTemperature(double temperature) {
