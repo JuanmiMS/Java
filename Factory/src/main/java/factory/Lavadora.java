@@ -2,6 +2,7 @@ package factory;
 
 public abstract class Lavadora {
 
+
 	protected boolean tieneTambor;
 	protected boolean tieneMandos;
 	protected String  tipoCarga;

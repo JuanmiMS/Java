@@ -9,9 +9,7 @@ public class TestLavadora {
 	@Test
 	public void test_carga_frontal() {
 		
-		Lavadora lavadora = new LavadoraCargaFrontal();
-		lavadora.ponerMandos();
-		lavadora.ponerTambor();
+		Lavadora lavadora = LavadoraFactory.creaFrontal();
 
 		assertEquals("frontal", lavadora.tipoCarga);
 		assertTrue(lavadora.tieneMandos);
@@ -21,9 +19,8 @@ public class TestLavadora {
 	@Test
 	public void test_carga_superior() {
 		
-		Lavadora lavadora = new LavadoraCargaSuperior();
-		lavadora.ponerMandos();
-		lavadora.ponerTambor();
+		Lavadora lavadora = LavadoraFactory.creaSuperior();
+
 		
 		assertEquals("superior", lavadora.tipoCarga);
 		assertTrue(lavadora.tieneMandos);
