@@ -21,7 +21,6 @@ public class TestLavadora {
 		
 		Lavadora lavadora = LavadoraFactory.creaSuperior();
 
-		
 		assertEquals("superior", lavadora.tipoCarga);
 		assertTrue(lavadora.tieneMandos);
 		assertTrue(lavadora.tieneTambor);
