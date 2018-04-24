@@ -7,25 +7,21 @@ public abstract class LavadoraFactory extends Lavadora {
 
     protected static Lavadora creaSuperior(){
         Lavadora lav = new LavadoraCargaSuperior();
-
+        lav.ponerMandos();
         setToTrue(lav);
-
         return lav;
     }
 
     protected static Lavadora creaFrontal(){
         Lavadora lav = new LavadoraCargaFrontal();
-
         setToTrue(lav);
-
         return lav;
     }
 
     private static void setToTrue(Lavadora lav){
-        lav.tieneMandos = true;
-        lav.tieneTambor = true;
+        lav.ponerMandos();
+        lav.ponerTambor();
     }
 
-
-//    abstract protected Lavadora creaLavadora();
+    abstract protected Lavadora creaLavadora();
 }
