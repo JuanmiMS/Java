@@ -29,7 +29,7 @@ public class App
         
         System.out.println( "Arrancando..." );
         regulator.regulate();
-        
+
         Jedi yoda = new Jedi();
         System.out.println( "\nArrancando a Yoda: " );
         regulator.regulate();
