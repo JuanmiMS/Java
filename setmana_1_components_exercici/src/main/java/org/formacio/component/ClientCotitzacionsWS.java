@@ -7,10 +7,15 @@ import org.springframework.stereotype.Component;
 public class ClientCotitzacionsWS implements IntegradorCotitzacions {
 
 	public int nombreInvocacions = 0;
+	private final float MITJANA_COTIZACIONS = 20f;
+	
+	public ClientCotitzacionsWS() {
+		this.obteMitjanaDiariaCotitzacions();
+	}
 	
 	public float obteMitjanaDiariaCotitzacions() {
 		nombreInvocacions++; // per controls del test
-		return 20f;
+		return MITJANA_COTIZACIONS;
 	}
 	
 	@Override
@@ -18,7 +23,7 @@ public class ClientCotitzacionsWS implements IntegradorCotitzacions {
 		switch (empresa) {
 		     case "cervesses.sa": return 30f;
 		     case "shandies.sa": return 10f;
-		     default : return 20f;
+		     default : return MITJANA_COTIZACIONS;
 		}
 	}
 
