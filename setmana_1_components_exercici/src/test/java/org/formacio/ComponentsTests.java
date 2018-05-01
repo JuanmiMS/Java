@@ -23,7 +23,7 @@ public class ComponentsTests {
 	private ServeiConsultaEmpreses servei;
 	
 	/**
-	 * Modifiqueu la classe IntegradorCotitzacions per a que sigui un compoment detectat per Spring 
+	 * Modifiqueu la classe IntegradorCotitzacions per a que sigui un component detectat per Spring 
 	 */
 	@Test
 	public void test_clientWS_component() {
