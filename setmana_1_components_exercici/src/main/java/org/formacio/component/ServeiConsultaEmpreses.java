@@ -14,6 +14,15 @@ public class ServeiConsultaEmpreses {
 	private ClientCotitzacionsWS calcCotizacions;
 	
 	
+	private void setCalcCotizacions(ClientCotitzacionsWS calcCotizacions) {
+		this.calcCotizacions = calcCotizacions;
+	}
+	
+	private void getCalcCotizacions(ClientCotitzacionsWS calcCotizacions) {
+		return this.calcCotizacions.obteMitjanaDiariaCotitzacions(empresa);
+	}
+	
+	
 	// modifiqueu aquest metode per canviar el 0 per el valor obtingut del clientCotitzacionsWS
 	public String infoEmpresa(String empresa) {
 		return "La empresa " + empresa + " cotitza a " + calcCotizacions.obteCotitzacio(empresa);
