@@ -56,9 +56,9 @@ public class Setmana1Tests {
 		
 	    boolean insertaNull = servei.matricula(4, null);
 	    assertFalse("Inserir null ha de retornar false", insertaNull);
-	    
+
 	    assertFalse("null no s'ha inserit",repositori.llistaAlumnes().contains(null));
-	    
+
 	    boolean insertaNoNull = servei.matricula(4, "Laura");
 	    assertTrue("Na Laura se pot matricular",insertaNoNull);
 	    assertEquals("Laura", repositori.obteAlumne(4));

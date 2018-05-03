@@ -62,6 +62,7 @@ public class ControllerTests {
      * La peticio /personal/consulta?id=x
      *  ha de retornar el nom de la persona que ocupa el lloc x a la "base de dades" de persona controller
      */
+
     @Test
     public void test_obtenir_amb_request_param() throws Exception {
         this.mockMvc.perform(get("/personal/consulta?id=0")).andExpect(status().isOk())

@@ -12,8 +12,23 @@ public class ServeiAlumnat {
 	 * Si el nom de l'alumne es null, no l'ha de donar d'alta
 	 * Retorna true si l'alumne s'ha inserit, false si no.
 	 */
+
+	private int id;
+	private String alumne;
+
+
+	public ServeiAlumnat(){}
+
 	public boolean matricula (int id, String alumne) {
-		return true;
+
+		if(alumne != null){
+			this.id=id;
+			this.alumne = alumne;
+			return true;
+		}
+
+		return false;
+
 	}
 	
 }
