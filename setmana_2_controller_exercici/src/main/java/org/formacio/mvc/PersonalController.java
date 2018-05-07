@@ -1,10 +1,7 @@
 package org.formacio.mvc;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.RequestWrapper;
 import java.util.ArrayList;
@@ -48,9 +45,10 @@ public class PersonalController {
 		return getBaseDeDades().get(id);
 	}
 
-	@RequestMapping(path = "/persona//afegir")
+	@RequestMapping(path = "/persona/afegir", method = RequestMethod.POST)
 	@ResponseBody
-	public String sonLas2340YnoMeApetecePensar(@PathVariable int id) {
-		return getBaseDeDades().get(id);
+	public String sonLas2340YnoMeApetecePensar(@PathVariable String nom) {
+		baseDeDades.add(nom);
+		return "ok";
 	}
 }
