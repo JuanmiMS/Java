@@ -30,8 +30,4 @@ public class ConexionMySQL {
         return con;
     }
 
-    public static void main(String[] args) {
-        ConexionMySQL con = new ConexionMySQL();
-    }
-
 }
