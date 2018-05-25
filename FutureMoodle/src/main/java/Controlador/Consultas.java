@@ -3,6 +3,7 @@ package Controlador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Consultas extends ConexionMySQL {
 
@@ -23,29 +24,38 @@ public class Consultas extends ConexionMySQL {
         } catch (Exception e) {
             System.err.println("Error " + e);
         }
-//        finally {
-//            try {
-//                if (getConexion() != null) {
-//                    getConexion().close();
-//                }
-//                if (pst != null) {
-//                    pst.close();
-//                }
-//                if (rs != null) {
-//                    rs.close();
-//                }
-//            } catch (SQLException e) {
-//                System.err.println("Error " + e);
-//            }
-//        }
+
 
 
         return false;
     }
 
-//    public static void main(String[] args) {
-//        Consultas co = new Consultas();
-//        System.out.println(co.autenticacion("admin@admin.com", "admin"));
-//        System.out.println(co.autenticacion("admin2@admin.com", "admin"));
-//    }
+    public ArrayList getAsignaturas(){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        ArrayList<String> asignaturas = new ArrayList<String>();
+
+        try {
+            String consulta = "SELECT * FROM asignaturas";
+            pst = getConexion().prepareStatement(consulta);
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+//                System.out.println(rs.getString("nombre"));
+                asignaturas.add(rs.getString("nombre"));
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+
+        return asignaturas;
+    }
+
+    public static void main(String[] args) {
+        Consultas co = new Consultas();
+        System.out.println(co.autenticacion("admin@admin.com", "admin"));
+
+        System.out.println(co.getAsignaturas());
+    }
 }
