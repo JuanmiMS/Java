@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class ConexionMySQL {
 
-    private String USERNAME = "sql7239767";
-    private String PASSWORD = "l4clAhB3Ed";
-    private String HOST = "sql7.freemysqlhosting.net";
+    private String USERNAME = "root";
+    private String PASSWORD = "1234";
+    private String HOST = "localhost";
     private String PORT = "3306";
-    private String DATABASE = "sql7239767";
+    private String DATABASE = "futuremoodle";
     private String CLASSNAME = "com.mysql.jdbc.Driver";
     private String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
     private Connection con;
