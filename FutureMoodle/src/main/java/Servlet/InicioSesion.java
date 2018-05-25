@@ -1,12 +1,9 @@
 package Servlet;
 // Import required java libraries
 
-import Controlador.ConexionMySQL;
 import Controlador.Consultas;
 
 import java.io.*;
-import java.util.ArrayList;
-import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class InicioSesion extends HttpServlet {
@@ -17,13 +14,12 @@ public class InicioSesion extends HttpServlet {
 
         Consultas co = new Consultas();
 
-        System.out.println(co.autenticacion(usuario, password)+" - 11");
-        System.out.println(co.autenticacion("admin2@admin.com", "admin")+" - 22");
-
-        //funciona a la inversa. WHY
         try {
             if(co.autenticacion(usuario, password)){
-                System.out.println("ok");
+
+                Cookie user = new Cookie("user", usuario);
+                user.setMaxAge(365*30*24*60*60);
+                response.addCookie(user);
                 response.sendRedirect("main.jsp");
             }
             else {
