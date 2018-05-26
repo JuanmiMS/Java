@@ -20,7 +20,7 @@
 
     for (int i = 0; i < cookies.length; i++) {
         Cookie c = cookies[i];
-        if (c.getName().equals("user")) {
+        if (c.getName().equals("usuario")) {
             nombre = c.getValue();
             foundCookie = true;
         }

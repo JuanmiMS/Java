@@ -51,6 +51,27 @@ public class Consultas extends ConexionMySQL {
 
         return asignaturas;
     }
+    public String getNameUser(String email){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            String consulta = "select name from users where email=\'"+email+"\'";
+            pst = getConexion().prepareStatement(consulta);
+            System.out.println(consulta);
+            rs = pst.executeQuery();
+
+
+            if (rs.next()){
+                String valor = rs.getString("name");
+                return valor;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+        return "NONAME";
+    }
 
     public String getNombreProfesor(String asignatura){
         PreparedStatement pst = null;

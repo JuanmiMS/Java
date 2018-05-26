@@ -9,15 +9,15 @@ import javax.servlet.http.*;
 public class InicioSesion extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response){
-        String usuario = request.getParameter("uname");
+        String email = request.getParameter("uname");
         String password = request.getParameter("pass");
 
         Consultas co = new Consultas();
 
         try {
-            if(co.autenticacion(usuario, password)){
+            if(co.autenticacion(email, password)){
 
-                Cookie user = new Cookie("user", usuario);
+                Cookie user = new Cookie("usuario", co.getNameUser(email).replace(" ",""));
                 user.setMaxAge(365*30*24*60*60);
                 response.addCookie(user);
                 response.sendRedirect("main.jsp");
