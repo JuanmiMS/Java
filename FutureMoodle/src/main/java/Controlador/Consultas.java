@@ -52,10 +52,52 @@ public class Consultas extends ConexionMySQL {
         return asignaturas;
     }
 
+    public String getNombreProfesor(String asignatura){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            String consulta = "select users.name from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'"+asignatura+"\'";
+            pst = getConexion().prepareStatement(consulta);
+            System.out.println(consulta);
+            rs = pst.executeQuery();
+
+
+            if (rs.next()){
+                System.out.println("1");
+                String valor = rs.getString("name");
+                System.out.println("hey "+ valor);
+                System.out.println("2");
+                return valor;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+        return "NONAME";
+    }
+    public String getEmailProfesor(String asignatura){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            String consulta = "select users.email from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'"+asignatura+"\'";
+            pst = getConexion().prepareStatement(consulta);
+            System.out.println(consulta);
+            rs = pst.executeQuery();
+
+
+            if (rs.next()){
+                String valor = rs.getString("email");
+                return valor;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+        return "NOMAIL";
+    }
     public static void main(String[] args) {
         Consultas co = new Consultas();
-        System.out.println(co.autenticacion("admin@admin.com", "admin"));
-
-        System.out.println(co.getAsignaturas());
     }
 }
