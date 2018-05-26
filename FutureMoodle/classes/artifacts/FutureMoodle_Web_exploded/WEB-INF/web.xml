@@ -12,14 +12,4 @@
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/iniciar</url-pattern>
     </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>Asignatura</servlet-name>
-        <servlet-class>Servlet.Asignatura</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Asignatura</servlet-name>
-        <url-pattern>/asignatura</url-pattern>
-    </servlet-mapping>
 </web-app>
