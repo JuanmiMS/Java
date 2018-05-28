@@ -30,27 +30,38 @@ public class Consultas extends ConexionMySQL {
         return false;
     }
 
-    public ArrayList getAsignaturas(){
+    public ArrayList getAsignaturas(String user){
         PreparedStatement pst = null;
         ResultSet rs = null;
         ArrayList<String> asignaturas = new ArrayList<String>();
 
         try {
-            String consulta = "SELECT * FROM asignaturas";
+            String consulta;
+            if(isAdmin(user)){
+                consulta = "select nombre from asignaturas";
+            }
+            else{
+                consulta = "select asignaturas.nombre \n" +
+                        "from asignaturas\n" +
+                        "inner join AsignaturasAlumnos\n" +
+                        "ON AsignaturasAlumnos.asignatura = asignaturas.id\n" +
+                        "where AsignaturasAlumnos.alumno = \'"+user+"\'";
+
+            }
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
-
+            System.out.println(consulta);
             while (rs.next()) {
-//                System.out.println(rs.getString("nombre"));
                 asignaturas.add(rs.getString("nombre"));
             }
 
         } catch (Exception e) {
             System.err.println("Error " + e);
         }
-
+        System.out.println(asignaturas);
         return asignaturas;
     }
+
     public String getNameUser(String email){
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -58,12 +69,31 @@ public class Consultas extends ConexionMySQL {
         try {
             String consulta = "select name from users where email=\'"+email+"\'";
             pst = getConexion().prepareStatement(consulta);
-            System.out.println(consulta);
             rs = pst.executeQuery();
 
 
             if (rs.next()){
                 String valor = rs.getString("name");
+                return valor;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+        return "NONAME";
+    }
+    public String getDniUser(String email){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            String consulta = "select dni from users where email=\'"+email+"\'";
+            pst = getConexion().prepareStatement(consulta);
+            rs = pst.executeQuery();
+
+
+            if (rs.next()){
+                String valor = rs.getString("dni");
                 return valor;
             }
 
@@ -80,15 +110,11 @@ public class Consultas extends ConexionMySQL {
         try {
             String consulta = "select users.name from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'"+asignatura+"\'";
             pst = getConexion().prepareStatement(consulta);
-            System.out.println(consulta);
             rs = pst.executeQuery();
 
 
             if (rs.next()){
-                System.out.println("1");
                 String valor = rs.getString("name");
-                System.out.println("hey "+ valor);
-                System.out.println("2");
                 return valor;
             }
 
@@ -104,7 +130,6 @@ public class Consultas extends ConexionMySQL {
         try {
             String consulta = "select users.email from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'"+asignatura+"\'";
             pst = getConexion().prepareStatement(consulta);
-            System.out.println(consulta);
             rs = pst.executeQuery();
 
 
@@ -118,6 +143,33 @@ public class Consultas extends ConexionMySQL {
         }
         return "NOMAIL";
     }
+
+
+    private boolean isAdmin(String dni){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            String consulta = "select rango from users where dni=\'"+dni+"\'";
+            pst = getConexion().prepareStatement(consulta);
+            rs = pst.executeQuery();
+
+
+            if (rs.next()){
+                String valor = rs.getString("rango");
+                System.out.println("valor: "+valor);
+                if("1".equals(valor)){
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+        return false;
+
+
+    }
+
     public static void main(String[] args) {
         Consultas co = new Consultas();
     }

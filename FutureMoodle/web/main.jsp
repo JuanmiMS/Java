@@ -15,6 +15,7 @@
 
     Cookie[] cookies = request.getCookies();
     String nombre = "";
+    String dni = "";
     boolean foundCookie = false;
 
 
@@ -22,20 +23,22 @@
         Cookie c = cookies[i];
         if (c.getName().equals("usuario")) {
             nombre = c.getValue();
-            foundCookie = true;
+        }
+        if (c.getName().equals("dni")) {
+            dni = c.getValue();
         }
     }
 
-    if (!foundCookie) {
-        response.sendRedirect("index.jsp");
-    }
+//    if (!foundCookie) {
+//        response.sendRedirect("index.jsp");
+//    }
 
 %>
 <h2>HOLA <%=nombre%>
 </h2>
 <%
     Consultas co = new Consultas();
-    ArrayList<String> asignaturas = co.getAsignaturas();
+    ArrayList<String> asignaturas = co.getAsignaturas(dni);
 %>
 <% for (String asignatura : asignaturas) {%>
 <%--<a href="asignatura.jsp?name=<%=asignatura%>">--%>
@@ -62,7 +65,6 @@
 <%--</a>--%>
 <%--</a>--%>
 <% }%>
-
 
 </body>
 </html>

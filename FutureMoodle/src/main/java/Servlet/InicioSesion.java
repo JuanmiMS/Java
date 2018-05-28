@@ -18,8 +18,12 @@ public class InicioSesion extends HttpServlet {
             if(co.autenticacion(email, password)){
 
                 Cookie user = new Cookie("usuario", co.getNameUser(email).replace(" ",""));
+                Cookie dni = new Cookie("dni", co.getDniUser(email));
+
                 user.setMaxAge(365*30*24*60*60);
                 response.addCookie(user);
+                dni.setMaxAge(365*30*24*60*60);
+                response.addCookie(dni);
                 response.sendRedirect("main.jsp");
             }
             else {
