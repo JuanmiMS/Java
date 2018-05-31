@@ -144,6 +144,37 @@ public class Consultas extends ConexionMySQL {
         return "NOMAIL";
     }
 
+    public ArrayList getAlumnos(String profesor){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        ArrayList<String> alumnos = new ArrayList<String>();
+
+        try {
+            String consulta;
+            if(isAdmin(profesor)){
+                consulta = "select nombre from asignaturas";
+            }
+            else{
+                consulta = "select users.name, AsignaturasAlumnos.alumno from AsignaturasAlumnos\n" +
+                        "inner join users\n" +
+                        "on users.dni = asignaturasalumnos.alumno\n" +
+                        "where users.dni = asignaturasalumnos.alumno\n" +
+                        "and asignatura = (select id from asignaturas where profesor = '"+profesor+"' limit 1);";
+
+            }
+            pst = getConexion().prepareStatement(consulta);
+            rs = pst.executeQuery();
+            System.out.println(consulta);
+            while (rs.next()) {
+                alumnos.add(rs.getString("name"));
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error " + e);
+        }
+        System.out.println(alumnos);
+        return alumnos;
+    }
 
     private boolean isAdmin(String dni){
         PreparedStatement pst = null;
@@ -172,5 +203,11 @@ public class Consultas extends ConexionMySQL {
 
     public static void main(String[] args) {
         Consultas co = new Consultas();
+        ArrayList alumnos = co.getAlumnos("11111111B");
+        for (int i = 0;i<alumnos.size();i++){
+
+            System.out.println(alumnos.get(i));
+        }
+
     }
 }

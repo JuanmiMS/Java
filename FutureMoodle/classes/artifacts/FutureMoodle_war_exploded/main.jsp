@@ -9,40 +9,24 @@
     <title>Moodle 2.0</title>
     <link rel="stylesheet" type="text/css" href="Bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="Bootstrap/css/estilo.css"/>
-    <script src="Bootstrap/js/js.js"></script>
+    <script src="Bootstrap/js/javascript.js"></script>
 </head>
 <body>
-<%
+<%@ include file="utils/cookie.jsp" %>
 
-
-    Cookie[] cookies = request.getCookies();
-    String nombre = "";
-    String dni = "";
-    boolean foundCookie = false;
-
-
-    for (int i = 0; i < cookies.length; i++) {
-        Cookie c = cookies[i];
-        if (c.getName().equals("usuario")) {
-            nombre = c.getValue();
-        }
-        if (c.getName().equals("dni")) {
-            dni = c.getValue();
-        }
-    }
-%>
 <div id="main">
     <div class="top">
-        <h2>HOLA <%=nombre%></h2>
-        <%@ include file = "utils/lateralMenu.jsp" %>
+        <h2>HOLA <%=nombre%>
+        </h2>
+        <%@ include file="utils/lateralMenu.jsp" %>
     </div>
 
     <%
         Consultas co = new Consultas();
         ArrayList<String> asignaturas = co.getAsignaturas(dni);
+        ArrayList<String> alumnos = co.getAlumnos(dni);
     %>
     <% for (String asignatura : asignaturas) {%>
-    <%--<a href="asignatura.jsp?name=<%=asignatura%>">--%>
     <div id="cuadroAsig">
         <div id="cabezaAsig"><%=asignatura%>
         </div>
@@ -65,6 +49,13 @@
         </div>
     </div>
     <% }%>
+
+    <%if (nombre.contains("Profesor") || nombre.contains("Administrador")) {%>
+        <% for (int i = 0; i < alumnos.size(); i++) {%>
+         <div><%=alumnos.get(i)%></div>
+         <% }%>
+    <%}%>
+
 </div>
 </body>
 </html>
