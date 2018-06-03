@@ -26,26 +26,24 @@ public class Consultas extends ConexionMySQL {
         }
 
 
-
         return false;
     }
 
-    public ArrayList getAsignaturas(String user){
+    public ArrayList getAsignaturas(String user) {
         PreparedStatement pst = null;
         ResultSet rs = null;
         ArrayList<String> asignaturas = new ArrayList<String>();
 
         try {
             String consulta;
-            if(isAdmin(user)){
+            if (isAdmin(user)) {
                 consulta = "select nombre from asignaturas";
-            }
-            else{
+            } else {
                 consulta = "select asignaturas.nombre \n" +
                         "from asignaturas\n" +
                         "inner join AsignaturasAlumnos\n" +
                         "ON AsignaturasAlumnos.asignatura = asignaturas.id\n" +
-                        "where AsignaturasAlumnos.alumno = \'"+user+"\'";
+                        "where AsignaturasAlumnos.alumno = \'" + user + "\'";
 
             }
             pst = getConexion().prepareStatement(consulta);
@@ -62,17 +60,17 @@ public class Consultas extends ConexionMySQL {
         return asignaturas;
     }
 
-    public String getNameUser(String email){
+    public String getNameUser(String email) {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
         try {
-            String consulta = "select name from users where email=\'"+email+"\'";
+            String consulta = "select name from users where email=\'" + email + "\'";
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
 
 
-            if (rs.next()){
+            if (rs.next()) {
                 String valor = rs.getString("name");
                 return valor;
             }
@@ -82,17 +80,18 @@ public class Consultas extends ConexionMySQL {
         }
         return "NONAME";
     }
-    public String getDniUser(String email){
+
+    public String getDniUser(String email) {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
         try {
-            String consulta = "select dni from users where email=\'"+email+"\'";
+            String consulta = "select dni from users where email=\'" + email + "\'";
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
 
 
-            if (rs.next()){
+            if (rs.next()) {
                 String valor = rs.getString("dni");
                 return valor;
             }
@@ -103,17 +102,17 @@ public class Consultas extends ConexionMySQL {
         return "NONAME";
     }
 
-    public String getNombreProfesor(String asignatura){
+    public String getNombreProfesor(String asignatura) {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
         try {
-            String consulta = "select users.name from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'"+asignatura+"\'";
+            String consulta = "select users.name from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'" + asignatura + "\'";
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
 
 
-            if (rs.next()){
+            if (rs.next()) {
                 String valor = rs.getString("name");
                 return valor;
             }
@@ -123,17 +122,18 @@ public class Consultas extends ConexionMySQL {
         }
         return "NONAME";
     }
-    public String getEmailProfesor(String asignatura){
+
+    public String getEmailProfesor(String asignatura) {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
         try {
-            String consulta = "select users.email from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'"+asignatura+"\'";
+            String consulta = "select users.email from users inner join asignaturas on asignaturas.profesor = users.dni where asignaturas.nombre = \'" + asignatura + "\'";
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
 
 
-            if (rs.next()){
+            if (rs.next()) {
                 String valor = rs.getString("email");
                 return valor;
             }
@@ -144,22 +144,21 @@ public class Consultas extends ConexionMySQL {
         return "NOMAIL";
     }
 
-    public ArrayList getAlumnos(String profesor){
+    public ArrayList getAlumnos(String profesor) {
         PreparedStatement pst = null;
         ResultSet rs = null;
         ArrayList<String> alumnos = new ArrayList<String>();
 
         try {
             String consulta;
-            if(isAdmin(profesor)){
+            if (isAdmin(profesor)) {
                 consulta = "select nombre from asignaturas";
-            }
-            else{
+            } else {
                 consulta = "select users.name, AsignaturasAlumnos.alumno from AsignaturasAlumnos\n" +
                         "inner join users\n" +
                         "on users.dni = asignaturasalumnos.alumno\n" +
                         "where users.dni = asignaturasalumnos.alumno\n" +
-                        "and asignatura = (select id from asignaturas where profesor = '"+profesor+"' limit 1);";
+                        "and asignatura = (select id from asignaturas where profesor = '" + profesor + "' limit 1);";
 
             }
             pst = getConexion().prepareStatement(consulta);
@@ -176,20 +175,20 @@ public class Consultas extends ConexionMySQL {
         return alumnos;
     }
 
-    private boolean isAdmin(String dni){
+    private boolean isAdmin(String dni) {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
         try {
-            String consulta = "select rango from users where dni=\'"+dni+"\'";
+            String consulta = "select rango from users where dni=\'" + dni + "\'";
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
 
 
-            if (rs.next()){
+            if (rs.next()) {
                 String valor = rs.getString("rango");
-                System.out.println("valor: "+valor);
-                if("1".equals(valor)){
+                System.out.println("valor: " + valor);
+                if ("1".equals(valor)) {
                     return true;
                 }
             }
@@ -201,13 +200,40 @@ public class Consultas extends ConexionMySQL {
 
     }
 
+    public boolean registrar(String dni, String email, String password, String name, int rango) {
+
+        PreparedStatement pst = null;
+        try {
+            String consulta = "insert into users (DNI, email, password, name, rango) values (?,?,?,?,?)";
+            pst = getConexion().prepareStatement(consulta);
+            pst.setString(1, dni);
+            pst.setString(2, email);
+            pst.setString(3, password);
+            pst.setString(4, name);
+            pst.setInt(5, rango);
+
+            if (pst.executeUpdate() == 1) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(getConexion()!=null) {
+                try {
+                    getConexion().close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         Consultas co = new Consultas();
-        ArrayList alumnos = co.getAlumnos("11111111B");
-        for (int i = 0;i<alumnos.size();i++){
-
-            System.out.println(alumnos.get(i));
-        }
+        System.out.println(co.registrar("123456789A", "user2@user.com", "user","Usuario Dos Prueba", 3));
 
     }
 }
