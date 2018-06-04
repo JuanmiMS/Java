@@ -200,7 +200,7 @@ public class Consultas extends ConexionMySQL {
 
     }
 
-    public boolean registrar(String dni, String email, String password, String name, int rango) {
+    public boolean registrarUser(String dni, String email, String password, String name, int rango) {
 
         PreparedStatement pst = null;
         try {
@@ -219,7 +219,7 @@ public class Consultas extends ConexionMySQL {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(getConexion()!=null) {
+            if (getConexion() != null) {
                 try {
                     getConexion().close();
                 } catch (SQLException e) {
@@ -231,9 +231,61 @@ public class Consultas extends ConexionMySQL {
         return false;
     }
 
+    public boolean addAsignaturaAlumno(String dni, String... args) {
+
+        for (int i = 0; i < args.length; i++) {
+            PreparedStatement pst = null;
+            try {
+                String consulta = "insert into asignaturas (alumno, asignatura, superada) values (?,?,?)";
+                pst = getConexion().prepareStatement(consulta);
+                pst.setString(1, dni);
+                pst.setInt(2, getBbddId(args[i]));
+                pst.setBoolean(3, false);
+
+                if (pst.executeUpdate() == 1) {
+                    return true;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (getConexion() != null) {
+                    try {
+                        getConexion().close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+    private static int getBbddId(String name){
+        if ("prog".equals(name)){
+            return 1;
+        }
+        else if ("bbdd".equals(name)){
+            return 2;
+        }
+        else if ("ssii".equals(name)){
+            return 3;
+        }
+        else if ("llmm".equals(name)){
+            return 4;
+        }
+        else{
+            return 1;
+        }
+
+    }
+
     public static void main(String[] args) {
         Consultas co = new Consultas();
-        System.out.println(co.registrar("123456789A", "user2@user.com", "user","Usuario Dos Prueba", 3));
+//        System.out.println(co.registrarUser("123456789A", "user2@user.com", "user", "Usuario Dos Prueba", 3));
+        co.addAsignaturaAlumno("hola", null, "hey");
 
     }
 }

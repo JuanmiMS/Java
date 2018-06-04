@@ -34,7 +34,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-horizontal" role="form" method="POST" action="/register">
+    <form class="form-horizontal" role="form" method="POST" action="registrar">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-dni"></i></div>
-                        <input type="text" name="name" class="form-control" id="dni"
+                        <input type="text" name="dni" class="form-control" id="dni"
                                placeholder="00000000A" required autofocus>
                     </div>
                 </div>
@@ -154,23 +154,23 @@
             </div>
         </div>
 
-        <div id = "asignaturas" style="display: none;" class="row asignaturas"> <%--Asignaturas--%>
+        <div id = "asignaturas" name = "asignaturas" style="display: none;" class="row asignaturas"> <%--Asignaturas--%>
             <div class="col-md-3 field-label-responsive">
 
             <label>Asignaturas</label>
             </div>
             <div class="col-md-6">
             <label class="checkbox">
-                <input type="checkbox" value="prog">Programación
+                <input type="checkbox"  value="prog"  name="prog">Programación
             </label>
             <label class="checkbox">
-                <input type="checkbox" value="bbdd">Base de Datos
+                <input type="checkbox" value="bbdd" name="bbdd">Base de Datos
             </label>
             <label class="checkbox">
-                <input type="checkbox" value="ssii">Sistemas Digitales
+                <input type="checkbox" value="ssii" name="ssii">Sistemas Digitales
             </label>
             <label class="checkbox">
-                <input type="checkbox" value="llmm">Lenguaje de Marcas
+                <input type="checkbox" value="llmm" name="llmm">Lenguaje de Marcas
             </label>
             </div>
         </div>
