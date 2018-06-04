@@ -12,7 +12,7 @@ public class RegistrarUser extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String dni = request.getParameter("dni");
-        String name = request.getParameter("name");
+        String name = request.getParameter("nombre");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String rango = request.getParameter("rango");
@@ -31,12 +31,17 @@ public class RegistrarUser extends HttpServlet {
 
         //Comprobamos si es alumno o profesor
         if(rango.equals("Alumno")){
-            co.addAsignaturaAlumno(prog, llmm, ssii, bbdd);
+            co.addAsignaturaAlumno(dni,prog, llmm, ssii, bbdd);
         }
         else{
             //no hace nada, es profesor. Falta implementar
         }
 
+        try {
+            response.sendRedirect("index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

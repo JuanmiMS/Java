@@ -48,7 +48,6 @@ public class Consultas extends ConexionMySQL {
             }
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
-            System.out.println(consulta);
             while (rs.next()) {
                 asignaturas.add(rs.getString("nombre"));
             }
@@ -56,7 +55,6 @@ public class Consultas extends ConexionMySQL {
         } catch (Exception e) {
             System.err.println("Error " + e);
         }
-        System.out.println(asignaturas);
         return asignaturas;
     }
 
@@ -163,7 +161,6 @@ public class Consultas extends ConexionMySQL {
             }
             pst = getConexion().prepareStatement(consulta);
             rs = pst.executeQuery();
-            System.out.println(consulta);
             while (rs.next()) {
                 alumnos.add(rs.getString("name"));
             }
@@ -217,50 +214,34 @@ public class Consultas extends ConexionMySQL {
             }
 
         } catch (Exception e) {
+            System.out.println("mec");
             e.printStackTrace();
-        } finally {
-            if (getConexion() != null) {
-                try {
-                    getConexion().close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
         return false;
     }
 
-    public boolean addAsignaturaAlumno(String dni, String... args) {
+    public void addAsignaturaAlumno(String dni, String... args) {
 
         for (int i = 0; i < args.length; i++) {
+            String asig = args[i];
+            System.out.println("asig: "+asig+", ID: "+getBbddId(asig));
             PreparedStatement pst = null;
-            try {
-                String consulta = "insert into asignaturas (alumno, asignatura, superada) values (?,?,?)";
-                pst = getConexion().prepareStatement(consulta);
-                pst.setString(1, dni);
-                pst.setInt(2, getBbddId(args[i]));
-                pst.setBoolean(3, false);
+            if(args[i] != null) {
+                try {
+                    String consulta = "insert into AsignaturasAlumnos (alumno, asignatura, superada) values (?,?,?)";
+                    pst = getConexion().prepareStatement(consulta);
+                    pst.setString(1, dni);
+                    pst.setInt(2, getBbddId(asig));
+                    pst.setBoolean(3, false);
+                    pst.executeUpdate();
 
-                if (pst.executeUpdate() == 1) {
-                    return true;
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (getConexion() != null) {
-                    try {
-                        getConexion().close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                } catch (Exception e) {
+                    System.out.println("mec22");
+                    e.printStackTrace();
                 }
             }
-
         }
-
-        return false;
     }
 
     private static int getBbddId(String name){
@@ -285,7 +266,8 @@ public class Consultas extends ConexionMySQL {
     public static void main(String[] args) {
         Consultas co = new Consultas();
 //        System.out.println(co.registrarUser("123456789A", "user2@user.com", "user", "Usuario Dos Prueba", 3));
-        co.addAsignaturaAlumno("hola", null, "hey");
+       // co.addAsignaturaAlumno("hola", null, "hey");
 
+        co.addAsignaturaAlumno("13123", "prog",null,"llmm",null);
     }
 }

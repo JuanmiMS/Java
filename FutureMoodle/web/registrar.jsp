@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input type="text" name="name" class="form-control" id="name"
+                        <input type="text" name="nombre" class="form-control" id="name"
                                placeholder="Jaume" required autofocus>
                     </div>
                 </div>

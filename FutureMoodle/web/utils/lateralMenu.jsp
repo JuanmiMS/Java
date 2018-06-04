@@ -17,7 +17,7 @@
     <%--<%if ("admin@admin.com".equals(nombre)) { %>--%>
     <%if (1==1) { %>
 
-    <button type="button" class="btn btn-success" onclick="addUser()">Añadir usuario</button>
+    <button type="button" class="btn btn-success" onclick="window.location='registrar.jsp';">Añadir usuario</button>
         <button type="button" style="float: right" class="btn btn-danger">Borrar usuario</button>
     <% } %>
 
