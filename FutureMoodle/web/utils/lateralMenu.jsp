@@ -14,8 +14,8 @@
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <%--<a href="#">About</a>--%>
-    <%--<%if ("admin@admin.com".equals(nombre)) { %>--%>
-    <%if (1==1) { %>
+    <%if ("Administrador".equals(nombre)) { %>
+    <%--<%if (1==1) { %>--%>
 
     <button type="button" class="btn btn-success" onclick="window.location='registrar.jsp';">Añadir usuario</button>
         <button type="button" style="float: right" class="btn btn-danger">Borrar usuario</button>
