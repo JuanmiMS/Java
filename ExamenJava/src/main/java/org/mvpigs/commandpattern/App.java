@@ -55,7 +55,7 @@ public class App {
         Pedido pedido = new PedidoInternacional("Comarca", 10);
         TratamientoPedido tratamientoInt = new TratamientoPedidoInternacional(
                                                     (PedidoInternacional) pedido);
-        
+
         System.out.println(oficina.printarStatus(oficina.procesa(tratamientoInt), pedido));
 
         pedido = new PedidoInternacional("Mordor", 10);

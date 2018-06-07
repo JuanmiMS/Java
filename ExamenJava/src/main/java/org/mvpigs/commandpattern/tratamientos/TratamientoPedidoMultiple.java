@@ -1,17 +1,17 @@
 package org.mvpigs.commandpattern.tratamientos;
 
 import org.mvpigs.commandpattern.interfaces.Pedido;
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class TratamientoPedidoMultiple  {
 
-    private ArrayList<Pedido> pedidos;
+    private List<Pedido> pedidos;
     private int totalBultos;
     private int totalPeso;
 
 
-    public TratamientoPedidoMultiple(ArrayList pedidos) {
+    public TratamientoPedidoMultiple(List pedidos) {
         this.pedidos = pedidos;
     }
 

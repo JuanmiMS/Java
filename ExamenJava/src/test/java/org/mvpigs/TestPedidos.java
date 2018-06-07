@@ -18,7 +18,9 @@ import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoInternacional;
 import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoMultiple;
 import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoPeligroso;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 
 /**
  * NO PUEDES MODIFICAR EL CODIGO DE LOS CASOS TEST
@@ -206,7 +208,7 @@ public class TestPedidos {
          */
 
 
-        ArrayList pedidos = new ArrayList();
+        List pedidos = new LinkedList();
         pedidos.add(new PedidoNacional("Gondor", 10));
         pedidos.add(new PedidoNacional("Minas Tirith", 10));
         pedidos.add(new PedidoNacional("Rohan", 10));
