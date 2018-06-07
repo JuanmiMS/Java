@@ -80,7 +80,7 @@ public class TestPedidos {
         assertNotNull(tratamientoKO);
         assertFalse(tratamientoKO.tratar());
     }
-//
+
     @Test
     public void test_pedido_peligroso_OK() {
 
@@ -99,31 +99,31 @@ public class TestPedidos {
      * autogenerado haciendo uso de la clase UUID de Java
      * https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html
      */
-//    @Test
-//    public void test_UUID_generator() {
-//
-//        PedidoInternacional internacional = new PedidoInternacional("Mordor", 10);
-//        PedidoPeligrosoOrden peligroso = new PedidoPeligrosoOrden("Cima de los vientos",
-//                                                                  "no limpiarse las uñas con este puñal");
-//        assertNotNull(internacional.getId());
-//        assertNotNull(peligroso.getId());
-//
-//        assertTrue(internacional.getId() != peligroso.getId());
-//    }
+    @Test
+    public void test_UUID_generator() {
+
+        PedidoInternacional internacional = new PedidoInternacional("Mordor", 10);
+        PedidoPeligrosoOrden peligroso = new PedidoPeligrosoOrden("Cima de los vientos",
+                                                                  "no limpiarse las uñas con este puñal");
+        assertNotNull(internacional.getId());
+        assertNotNull(peligroso.getId());
+
+        assertTrue(internacional.getId() != peligroso.getId());
+    }
 
     /**
      * Añade una clase para los pedidos nacionales.
      */
 
-//    @Test
-//    public void test_pedido_nacional_UUDI() {
-//
-//        PedidoInternacional internacional = new PedidoInternacional("Mordor", 10);
-//        assertNotNull(internacional);
-//        PedidoNacional nacional = new PedidoNacional("Gondor", 50);
-//        assertNotNull(nacional);
-//        assertTrue(internacional.getId() != nacional.getId());
-//    }
+    @Test
+    public void test_pedido_nacional_UUDI() {
+
+        PedidoInternacional internacional = new PedidoInternacional("Mordor", 10);
+        assertNotNull(internacional);
+        PedidoNacional nacional = new PedidoNacional("Gondor", 50);
+        assertNotNull(nacional);
+        assertTrue(internacional.getId() != nacional.getId());
+    }
     
     /**
      * Construye una oficina que procese todo tipo de pedidos.

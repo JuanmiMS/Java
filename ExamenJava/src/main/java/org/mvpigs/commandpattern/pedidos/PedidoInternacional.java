@@ -2,15 +2,19 @@ package org.mvpigs.commandpattern.pedidos;
 
 import org.mvpigs.commandpattern.interfaces.Pedido;
 
+import java.util.UUID;
+
 public class PedidoInternacional implements Pedido {
 
     private String destino;
     private int peso;
+    private String id;
+    UUID uuid;
 
     public PedidoInternacional(String destino, int peso){
         this.destino = destino;
         this.peso = peso;
-
+        this.id = uuid.randomUUID().toString();
     }
 
     @Override
@@ -21,5 +25,9 @@ public class PedidoInternacional implements Pedido {
     @Override
     public String destino() {
         return this.destino;
+    }
+
+    public Object getId() {
+        return this.id;
     }
 }
