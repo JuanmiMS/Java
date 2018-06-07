@@ -8,12 +8,7 @@ public class TratamientoPedidoInternacional implements TratamientoPedido {
     private boolean seTrata;
 
     public TratamientoPedidoInternacional(PedidoInternacional pedidoInter){
-        if("Mordor".equals(pedidoInter.destino())){
-            this.seTrata = false;
-        }
-        else {
-            this.seTrata = true;
-        }
+        this.seTrata = !"Mordor".equals(pedidoInter.destino());
     }
 
     @Override

@@ -1,13 +1,12 @@
 package org.mvpigs.commandpattern.tratamientos;
 
 import org.mvpigs.commandpattern.interfaces.Pedido;
-
 import java.util.ArrayList;
 
 
 public class TratamientoPedidoMultiple  {
 
-    ArrayList<Pedido> pedidos = new ArrayList();
+    private ArrayList<Pedido> pedidos;
     private int totalBultos;
     private int totalPeso;
 
@@ -17,15 +16,11 @@ public class TratamientoPedidoMultiple  {
     }
 
     public void calcularTotalBultos(){
-        for(Pedido pedido : pedidos){
-            totalBultos++;
-        }
+        for(Pedido pedido : pedidos) totalBultos++;
     }
     
     public void calcularPesoTotal(){
-        for(Pedido pedido : pedidos){
-            this.totalPeso+=pedido.peso();
-        }
+        for(Pedido pedido : pedidos) this.totalPeso += pedido.peso();
     }
 
     public double getNumBultos() {
@@ -37,9 +32,6 @@ public class TratamientoPedidoMultiple  {
     }
 
     public boolean tratar() {
-        if(this.getPesoTotal() > 0 && this.getNumBultos() == pedidos.size()){
-            return true;
-        }
-        return false;
+        return this.getPesoTotal() > 0 && this.getNumBultos() == pedidos.size();
     }
 }
