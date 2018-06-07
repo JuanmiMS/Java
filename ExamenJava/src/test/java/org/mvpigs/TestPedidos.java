@@ -19,40 +19,40 @@ import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoMultiple;
 import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoPeligroso;
 
 /**
- * NO PUEDES MODIFICAR EL CODIGO DE LOS CASOS TEST 
+ * NO PUEDES MODIFICAR EL CODIGO DE LOS CASOS TEST
  */
 public class TestPedidos {
 
     /**
      * Crea una clase TratamientoPedidoInternacional que permita tratar
      * pedidos internacionales.
-     * 
-     * La clase permite tratar todos los pedidos excepto 
+     * <p>
+     * La clase permite tratar todos los pedidos excepto
      * los que van a Mordor.
-     * 
+     * <p>
      * Crea las clases necesarias que se requieren en los casos test
      * respetando los constructores que se exigen.
      */
     @Test
-	public void test_Mordor() {
+    public void test_Mordor() {
 
         Pedido pedidoInt = new PedidoInternacional("Mordor", 100);
         assertEquals("Mordor", pedidoInt.destino());
 
-		TratamientoPedido tratamientoKO = new TratamientoPedidoInternacional(
-                                                    (PedidoInternacional) pedidoInt);
+        TratamientoPedido tratamientoKO = new TratamientoPedidoInternacional(
+                (PedidoInternacional) pedidoInt);
         assertNotNull(tratamientoKO);
         assertFalse(tratamientoKO.tratar());
-	}
+    }
 
-	@Test
-	public void test_Comarca() {
+    @Test
+    public void test_Comarca() {
 
         Pedido pedidoInt = new PedidoInternacional("Comarca", 100);
         assertEquals("Comarca", pedidoInt.destino());
 
-		TratamientoPedido tratamientoOK = new TratamientoPedidoInternacional(
-                                                    (PedidoInternacional) pedidoInt);
+        TratamientoPedido tratamientoOK = new TratamientoPedidoInternacional(
+                (PedidoInternacional) pedidoInt);
         assertNotNull(tratamientoOK);
         assertTrue(tratamientoOK.tratar());
     }
@@ -60,11 +60,11 @@ public class TestPedidos {
     /**
      * Crea una clase TratamientoPedidoPeligroso que permita tratar
      * pedidos peligrosos.
-     * 
+     * <p>
      * La clase permite tratar todos los pedidos segun sus
-     * instrucciones excepto aquellos cuya instruccion sea 
-     * "no ponerselo en el dedo". 
-     * 
+     * instrucciones excepto aquellos cuya instruccion sea
+     * "no ponerselo en el dedo".
+     * <p>
      * Crea las clases necesarias que se requieren en los casos test
      * respetando los constructores que se exigen.
      */
@@ -72,7 +72,7 @@ public class TestPedidos {
     public void test_pedido_peligroso_KO() {
 
         Pedido pedidoConPeligro = new PedidoPeligrosoOrden("Monte del destino",
-                                                           "no ponerselo en el dedo");
+                "no ponerselo en el dedo");
         assertEquals("Monte del destino", pedidoConPeligro.destino());
 
         TratamientoPedido tratamientoKO =
@@ -85,11 +85,11 @@ public class TestPedidos {
     public void test_pedido_peligroso_OK() {
 
         Pedido pedidoConPeligro = new PedidoPeligrosoOrden("Cima de los vientos",
-                                                           "no limpiarse las uñas con este puñal");
+                "no limpiarse las uñas con este puñal");
         assertEquals("Cima de los vientos", pedidoConPeligro.destino());
 
         TratamientoPedido tratamientoOK = new TratamientoPedidoPeligroso(
-                                                    (PedidoPeligroso) pedidoConPeligro);
+                (PedidoPeligroso) pedidoConPeligro);
         assertTrue(tratamientoOK.tratar());
     }
 
@@ -104,7 +104,7 @@ public class TestPedidos {
 
         PedidoInternacional internacional = new PedidoInternacional("Mordor", 10);
         PedidoPeligrosoOrden peligroso = new PedidoPeligrosoOrden("Cima de los vientos",
-                                                                  "no limpiarse las uñas con este puñal");
+                "no limpiarse las uñas con este puñal");
         assertNotNull(internacional.getId());
         assertNotNull(peligroso.getId());
 
@@ -124,10 +124,10 @@ public class TestPedidos {
         assertNotNull(nacional);
         assertTrue(internacional.getId() != nacional.getId());
     }
-    
+
     /**
      * Construye una oficina que procese todo tipo de pedidos.
-     * 
+     * <p>
      * La oficina procesa los pedidos en funcion de si
      * es posible tratarlos o no segun las reglas de cada
      * tipo de pedido
@@ -138,45 +138,45 @@ public class TestPedidos {
 
         Procesador correos = new Oficina();
         TratamientoPedido pedidoInt = new TratamientoPedidoInternacional(
-                                            new PedidoInternacional("Comarca", 100));
+                new PedidoInternacional("Comarca", 100));
         assertTrue(correos.procesa(pedidoInt));
 
         TratamientoPedido pedidoConPeligro = new TratamientoPedidoPeligroso(
-                                                 new PedidoPeligrosoOrden(
-                                                        "Cima de los vientos",
-                                                        "no limpiarse las uñas con este puñal"));
+                new PedidoPeligrosoOrden(
+                        "Cima de los vientos",
+                        "no limpiarse las uñas con este puñal"));
         assertTrue(correos.procesa(pedidoConPeligro));
     }
 
     /**
      * La oficina puede enviar un mensaje que informe del
      * status del pedido, en funcion de si ha sido posible procesarlo.
-     * 
+     * <p>
      * Hace uso de un tipo enumerado STATUS con las constantes
      * ACEPTADO y RECHAZADO.
      */
 
-//    @Test
-//    public void test_printar_status() {
-//
-//        Oficina correos = new Oficina();
-//        PedidoInternacional toComarcaWithLove = new PedidoInternacional("Comarca", 100);
-//        TratamientoPedido pedidoInt = new TratamientoPedidoInternacional(toComarcaWithLove);
-//
-//        assertTrue(correos.procesa(pedidoInt));
-//        assertEquals("Comarca ACEPTADO", correos.printarStatus(
-//                                            correos.procesa(pedidoInt), toComarcaWithLove));
-//
-//        PedidoPeligroso pedidoConPeligro = new PedidoPeligrosoOrden("Monte del destino",
-//                                                                    "no ponerselo en el dedo");
-//        TratamientoPedido tratamientoKO = new TratamientoPedidoPeligroso(pedidoConPeligro);
-//
-//        assertFalse(correos.procesa(tratamientoKO));
-//        assertEquals("Monte del destino RECHAZADO", correos.printarStatus(
-//                                                        correos.procesa(tratamientoKO),
-//                                                                        pedidoConPeligro));
-//
-//    }
+    @Test
+    public void test_printar_status() {
+
+        Oficina correos = new Oficina();
+        PedidoInternacional toComarcaWithLove = new PedidoInternacional("Comarca", 100);
+        TratamientoPedido pedidoInt = new TratamientoPedidoInternacional(toComarcaWithLove);
+
+        assertTrue(correos.procesa(pedidoInt));
+        assertEquals("Comarca ACEPTADO",
+                correos.printarStatus(correos.procesa(pedidoInt), toComarcaWithLove));
+
+        PedidoPeligroso pedidoConPeligro = new PedidoPeligrosoOrden("Monte del destino",
+                "no ponerselo en el dedo");
+        TratamientoPedido tratamientoKO = new TratamientoPedidoPeligroso(pedidoConPeligro);
+
+        assertFalse(correos.procesa(tratamientoKO));
+        assertEquals("Monte del destino RECHAZADO", correos.printarStatus(
+                correos.procesa(tratamientoKO),
+                pedidoConPeligro));
+
+    }
 //
 //    /**
 //     * Crea una clase TratamientoPedidoMultiple que permita tratar
